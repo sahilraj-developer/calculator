@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>JavaScript Calculator</title>
+    <link rel="stylesheet" href="./index.css" >
+  </head>
+  <body class="calculator">
+    <input type="text" id="result" disabled>
+    <br>
+    <div class="one">
+        <button onclick="clearResult()">C</button>
+        <button onclick="deleteSymbol()">DEL</button>
+
+    </div>
+   
+    <br>
+    <div class="two">
+    <button onclick="appendToResult(7)">7</button>
+    <button onclick="appendToResult(8)">8</button>
+    <button onclick="appendToResult(9)">9</button>
+    <button onclick="performOperation('*')">*</button>
+    </div>
+    
+    <br>
+    <div class="three">
+
+        <button onclick="appendToResult(4)">4</button>
+        <button onclick="appendToResult(5)">5</button>
+        <button onclick="appendToResult(6)">6</button>
+        <button onclick="performOperation('/')">/</button>
+
+    </div>
+   
+    <br>
+    <div class="four">
+        <button onclick="appendToResult(1)">1</button>
+        <button onclick="appendToResult(2)">2</button>
+        <button onclick="appendToResult(3)">3</button>
+        <button onclick="performOperation('+')">+</button>
+    </div>
+   
+    <br>
+    <div class="five">
+    <button onclick="appendToResult(0)">0</button>
+    <button onclick="appendToResult('.')">.</button>
+    <button onclick="performOperation('-')">-</button>
+    <button onclick="calculateResult()">=</button>
+
+    </div>
+    
+    <script>
+      let result = "";
+
+      function clearResult() {
+        result = "";
+        document.getElementById("result").value = result;
+      }
+
+      function deleteSymbol() {
+        result = result.slice(0, -1);
+        document.getElementById("result").value = result;
+      }
+
+      function appendToResult(symbol) {
+        result += symbol;
+        document.getElementById("result").value = result;
+      }
+
+      function performOperation(operator) {
+        result += operator;
+        document.getElementById("result").value = result;
+      }
+
+      function calculateResult() {
+        try {
+          result = eval(result);
+          document.getElementById("result").value = result;
+        } catch (error) {
+          alert("Invalid Calculation");
+        }
+      }
+    </script>
+  </body>
+</html>
